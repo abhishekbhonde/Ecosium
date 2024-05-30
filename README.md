@@ -1,4 +1,4 @@
-# E-Commerce Application
+#Ecosium
 
 ## Overview
 This is a comprehensive e-commerce application built using Node.js, Express.js, and MongoDB. It features user authentication, product listing, searching, and filtering, shopping cart and checkout systems, order management for users and admins, payment integration, and a review and rating system for products.
