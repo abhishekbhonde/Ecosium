@@ -1,18 +1,18 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://abhishekbhonde8:kNYEB1ajpeC52VHQ@cluster0.hrwm5lp.mongodb.net/', {
+mongoose.connect('mongodb+srv://abhishekbhonde8:kNYEB1ajpeC52VHQ@cluster0.hrwm5lp.mongodb.net/newUser', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
 
 // User Schema
 const UserSchema = new mongoose.Schema({
-    userId: { type: String, required: true, unique: true },
+    userId: { type: String, required: true},
     username: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
+    email: { type: String, required: true },
     password: { type: String, required: true },
     address: String
-}, { timestamps: true });
+});
 
 // Product Schema
 const ProductSchema = new mongoose.Schema({
