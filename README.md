@@ -1,83 +1,50 @@
-# Turborepo starter
+# E-Commerce Application
 
-This is an official starter Turborepo.
+## Overview
+This is a comprehensive e-commerce application built using Node.js, Express.js, and MongoDB. It features user authentication, product listing, searching, and filtering, shopping cart and checkout systems, order management for users and admins, payment integration, and a review and rating system for products.
 
-## Using this example
+## Features
+- User authentication and profile management
+- Product listing, searching, and filtering
+- Shopping cart and checkout system
+- Order management for users and admins
+- Payment integration (Stripe, PayPal)
+- Review and rating system for products
 
-Run the following command:
+## Entity-Relationship Diagram
+The application is structured around the following entities and their relationships:
 
-```sh
-npx create-turbo@latest
-```
-
-## What's inside?
-
-This Turborepo includes the following packages/apps:
-
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
-```
-
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
-# Ecosium
-# Ecosium
+```plaintext
++----------------+       +-----------------+       +--------------+
+|     User       |       |     Product     |       |   Category   |
+|----------------|       |-----------------|       |--------------|
+| userId         | 1   M | productId       | M   1 | categoryId   |
+| name           |-------| name            |-------| name         |
+| email          |       | description     |       | description  |
+| password       |       | price           |       +--------------+
+| address        |       | stock           |
++----------------+       | categoryId      |       +--------------+
+                         +-----------------+       |    Review    |
+                                                    |--------------|
+                                                    | reviewId     |
++----------------+       +-----------------+       | userId       |
+|     Order      |       |    OrderItem    |       | productId    |
+|----------------|       |-----------------|       | rating       |
+| orderId        | 1   M | orderItemId     | M   1 | comment      |
+| userId         |-------| orderId         |-------+--------------+
+| orderDate      |       | productId       |
+| totalAmount    |       | quantity        |
+| status         |       | price           |
++----------------+       +-----------------+       +--------------+
+                                                    |    Cart      |
+                                                    |--------------|
++----------------+       +-----------------+       | cartId       |
+|    Payment     |       |    CartItem     |       | userId       |
+|----------------|       |-----------------|       | createdAt    |
+| paymentId      | 1   1 | cartItemId      | M   1 +--------------+
+| orderId        |-------| cartId          |
+| userId         |       | productId       |
+| amount         |       | quantity        |
+| paymentDate    |       | price           |
+| paymentMethod  |       +-----------------+
++----------------+
