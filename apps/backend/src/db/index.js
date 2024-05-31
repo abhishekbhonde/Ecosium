@@ -16,6 +16,8 @@ const UserSchema = new mongoose.Schema({
 
 // Product Schema
 const ProductSchema = new mongoose.Schema({
+    username:String,
+    password:String,
     productId: { type: String, required: true },
     productName: { type: String, required: true },
     description: String,

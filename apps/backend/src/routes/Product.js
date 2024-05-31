@@ -2,10 +2,11 @@ const express = require('express');
 const { Product } = require('../db/index');
 const { Router } = require("express");
 const router = Router();
+const productMiddelware  = require("../middleware/product")
 const app = express();
 app.use(express.json());
 
-router.post('/products', (req, res) => {  // Corrected the route path
+router.post('/products',productMiddelware, (req, res) => {  // Corrected the route path
     const productId = req.body.productId;
     const productName = req.body.productName;
     const description = req.body.description;  // Corrected the key name
