@@ -16,13 +16,13 @@ const UserSchema = new mongoose.Schema({
 
 // Product Schema
 const ProductSchema = new mongoose.Schema({
-    productId: { type: String, required: true, unique: true },
+    productId: { type: String, required: true },
     productName: { type: String, required: true },
     description: String,
     price: { type: Number, required: true },
     stock: { type: Number, required: true },
-    categoryId: { type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true }
-}, { timestamps: true });
+    // categoryId: { type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true }
+});
 
 // Category Schema
 const CategorySchema = new mongoose.Schema({
