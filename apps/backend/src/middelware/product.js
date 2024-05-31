@@ -1,9 +1,8 @@
-
-const {User} = require("../db")
+const {User} = require('../db/index')
 function productMiddelware(req,res, next){
    
    const {username, password} = req.headers;
-    User.find({
+    User.findOne({
         username,
         password
     }).then(function(value){

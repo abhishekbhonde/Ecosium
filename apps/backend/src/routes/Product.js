@@ -2,7 +2,7 @@ const express = require('express');
 const { Product } = require('../db/index');
 const { Router } = require("express");
 const router = Router();
-const productMiddelware  = require("../middleware/product")
+const productMiddelware = require("../middelware/product")
 const app = express();
 app.use(express.json());
 

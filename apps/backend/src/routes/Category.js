@@ -1,9 +1,10 @@
 const express = require("express");
 const { Router } = require("express");
 const {Category} = require('../db/index')
+const {Cart} = require('../db/index')
 const router = Router();
 const app = express();
-app.use(experss.json());
+app.use(express.json())
 
 
 router.post('/Items', (req,res)=>{
@@ -31,7 +32,6 @@ router.post('/Items', (req,res)=>{
         })
     }
 })
-
 
 
 module.exports = router

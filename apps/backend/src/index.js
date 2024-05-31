@@ -4,13 +4,14 @@ const app = express();
 const userRouter = require('./routes/User')
 const productRouter = require('./routes/Product')
 const categoryRouter = require('./routes/Category');
-
+const cartRouter = require('./routes/Cart')
 
 app.use(bodyParser.json());
 
 app.use('/user', userRouter);
 app.use('/product', productRouter)
-app.user('/category', categoryRouter);
+app.use('/category', categoryRouter);
+app.use('/cart', cartRouter)
 
 
 
