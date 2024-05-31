@@ -65,7 +65,7 @@ const CartSchema = new mongoose.Schema({
     cartId: { type: String, required: true, unique: true },
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     createdAt: { type: Date, default: Date.now }
-}, { timestamps: true });
+});
 
 // CartItem Schema
 const CartItemSchema = new mongoose.Schema({

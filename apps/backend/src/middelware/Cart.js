@@ -1,22 +1,21 @@
-const express = require("express");
-const {User} = require("../db/index")
+// middleware/Cart.js
+const { User } = require('../db/index');
 
-
-function cartMiddelWare(req,res,next){
+module.exports = async function (req, res, next) {
     const {userId} = req.headers;
 
-    User.findOne({
-        userId
-    }).then(function(cart){
-        if(cart){
-            next()
-        }
-        else{
-            res.json({
-                msg:"Authenticaton failed"
-            })
-        }
+    // if (!userId) {
+    //     return res.status(400).json({ msg: 'userId is required' });
+    // }
+   const user = await User.findOne({
+    userId
+   })
+   if(user){
+    next()
+   }
+   else{
+    res.json({
+        msg:"Error while authentication"
     })
-}
-
-module.exports = cartMiddelWare
+   }
+};
