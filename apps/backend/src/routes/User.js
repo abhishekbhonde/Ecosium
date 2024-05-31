@@ -1,18 +1,23 @@
 const express = require('express');
-const { User } = require('../db');
+const { User } = require('../db/index');
 const { Router } = require("express");
 const router = Router();
 const app = express()
 app.use(express.json());
 
 // user signup route
-router.post('/signup', (res,req)=>{
-    const { username,email,password,address} = req.body;
+router.post('/signup', (req,res)=>{
+    const userId = req.body.userId;
+    const username = req.body.username;
+    const email = req.body.email;
+    const password = req.body.password;
+    const address = req.body.password;
     User.create({
-        username,
-        email,
-        password,
-        address
+        userId:userId,
+        username:username,
+        email:email,
+        password:password,
+        address:address
     }).then(function(value){
         if(value){
             res.json({

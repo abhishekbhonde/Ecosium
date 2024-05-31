@@ -7,7 +7,7 @@ mongoose.connect('mongodb+srv://abhishekbhonde8:kNYEB1ajpeC52VHQ@cluster0.hrwm5l
 
 // User Schema
 const UserSchema = new mongoose.Schema({
-    userId: { type: String, required: true},
+    userId: { type: Number, required: true},
     username: { type: String, required: true },
     email: { type: String, required: true },
     password: { type: String, required: true },
